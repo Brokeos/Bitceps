@@ -1,0 +1,21 @@
+RewriteEngine On
+
+#RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?url=$1 [L]
+
+RedirectMatch 403 ^/src/?$
+RedirectMatch 403 ^/view/?$
+
+#ErrorDocument 404 https://%{HTTP_HOST}/404
+
+ServerSignature Off
+
+<IfModule mod_headers.c>
+
+    Header always set X-FRAME-OPTIONS "DENY"
+    Header always set X-Content-Type-Options "nosniff"
+
+</IfModule>

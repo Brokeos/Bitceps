@@ -2,6 +2,7 @@
 
 Ceci est un projet Universitaire.
 
+
 Le sujet de base était de rendre un MVP (Produit Minimum Viable) d'un site de salle de sport.
 
 N'ayant pas le droit d'utiliser des Frameworks tel que Symfony ou Laravel, j'ai décidé d'en constuire un.
@@ -9,6 +10,8 @@ N'ayant pas le droit d'utiliser des Frameworks tel que Symfony ou Laravel, j'ai 
 Le projet étant suivis par plusieurs amis, j'ai décidé de le rendre public.
 
 Bien évidemment celui-ci n'est pas complet, et sera certainement soumis à d'autres mises à jours.
+
+Lien du site en production : https://bitceps.brokeos.fr
 
 ### Prérequis
 

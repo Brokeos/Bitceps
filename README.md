@@ -36,6 +36,6 @@ Configurer le serveur Apache pour qu'il accepte la réécriture (les .htaccess).
 ## Remerciements
 
 * Les testeurs
-* Celui qui m'a donné l'idée du nom (promis j'édit quand je retrouve !)
+* Celui qui m'a donné l'idée du nom `Astremy` merci à toi, sans toi bah.. J'aurais fait autrement !
 
 

@@ -70,7 +70,7 @@ class SecurityController extends AbstractController
         $firstnameValidator = new LengthValidator(Kernel::post('firstname'), 'prénom', 'm', 4, 20);
         $lastnameValidator = new LengthValidator(Kernel::post('lastname'), 'nom', 'm', 4, 20);
         $genderValidator = new InArrayValidator(Kernel::post('gender'), 'genre', 'm', ['male', 'female']);
-        $dateValidator = new DateValidator(Kernel::post('birthdate'), "date d'anniversaire", 'f');
+        $dateValidator = new DateValidator(Kernel::post('birthdate'), "date d'anniversaire", 'f', true);
         $constraints = Validator::constraintsValidator([$emailValidator, $uniqueEmailValidator, $passwordValidator, $passwordLengthValidator, $firstnameValidator, $lastnameValidator, $genderValidator, $dateValidator]);
         if ($constraints->getPassed())
         {

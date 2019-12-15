@@ -42,7 +42,7 @@ class UserController extends AbstractController
 
     public function addParticipation($id): void
     {
-        if (!is_int($id))
+        if (intval($id) != $id)
             Templater::redirect('404');
         $userParticipations = Kernel::getModel(Participation::class)->getByUser(Kernel::getUser());
         $participations = [];
@@ -63,7 +63,7 @@ class UserController extends AbstractController
 
     public function removeParticipation($id): void
     {
-        if (!is_int($id))
+        if (intval($id) != $id)
             Templater::redirect('404');
         $participation = new Participation();
         $participation->setUser(Kernel::getUser());
@@ -79,7 +79,7 @@ class UserController extends AbstractController
 
     public function checkout($id): void
     {
-        if (!is_int($id))
+        if (intval($id) != $id)
             Templater::redirect('404');
         $tarif = Kernel::getModel(Tarif::class)->getById($id);
         if ($tarif != null)
@@ -93,7 +93,7 @@ class UserController extends AbstractController
 
     public function checkoutPost($id): void
     {
-        if (!is_int($id))
+        if (intval($id) != $id)
             Templater::redirect('404');
         $tarif = Kernel::getModel(Tarif::class)->getById($id);
         $user = Kernel::getUser();

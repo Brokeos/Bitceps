@@ -47,7 +47,7 @@ class PlanningController extends AbstractController
 
     public function showTrainer($id): void
     {
-        if (!is_int($id))
+        if (intval($id) != $id)
             Templater::redirect('404');
         $trainer = Kernel::getModel(Trainer::class)->getById($id);
         if ($trainer == null)

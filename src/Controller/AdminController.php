@@ -59,7 +59,7 @@ class AdminController extends AbstractController
 
     public function editTrainer($id): void
     {
-        if (!is_int($id))
+        if (intval($id) != $id)
             Templater::redirect('404');
         $trainer = Kernel::getModel(Trainer::class)->getById($id);
         Templater::render('admin/trainers/edit.html.php', ['active' => 'admin', 'title' => 'Editer un Entraineur', 'trainer' => $trainer]);
@@ -67,7 +67,7 @@ class AdminController extends AbstractController
 
     public function postEditTrainer($id): void
     {
-        if (!is_int($id))
+        if (intval($id) != $id)
             Templater::redirect('404');
         $trainer = Kernel::getModel(Trainer::class)->getById($id);
         $nameValidator = new LengthValidator(Kernel::post('name'), 'nom', 'm', 3, 30);
@@ -106,7 +106,7 @@ class AdminController extends AbstractController
 
     public function trainerPlanning($id): void
     {
-        if (!is_int($id))
+        if (intval($id) != $id)
             Templater::redirect('404');
         $trainer = Kernel::getModel(Trainer::class)->getById($id);
         if ($trainer == null)
@@ -154,7 +154,7 @@ class AdminController extends AbstractController
 
     public function editLesson($id): void
     {
-        if (!is_int($id))
+        if (intval($id) != $id)
             Templater::redirect('404');
         $lesson = Kernel::getModel(Lesson::class)->getById($id);
         if ($lesson == null)
@@ -170,7 +170,7 @@ class AdminController extends AbstractController
 
     public function postEditLesson($id): void
     {
-        if (!is_int($id))
+        if (intval($id) != $id)
             Templater::redirect('404');
         $lesson = Kernel::getModel(Lesson::class)->getById($id);
         $nameValidator = new LengthValidator(Kernel::post('name'), 'nom', 'm', 3, 30);
@@ -198,7 +198,7 @@ class AdminController extends AbstractController
 
     public function delLesson($id): void
     {
-        if (!is_int($id))
+        if (intval($id) != $id)
             Templater::redirect('404');
         $lesson = Kernel::getModel(Lesson::class)->getById($id);
         Kernel::getModel(Lesson::class)->delete($lesson);
@@ -213,7 +213,7 @@ class AdminController extends AbstractController
 
     public function editTarif($id): void
     {
-        if (!is_int($id))
+        if (intval($id) != $id)
             Templater::redirect('404');
         $tarif = Kernel::getModel(Tarif::class)->getById($id);
         Templater::render('admin/tarifs/edit.html.php', ['active' => 'admin', 'title' => 'Administration', 'tarif' => $tarif]);
@@ -221,7 +221,7 @@ class AdminController extends AbstractController
 
     public function postEditTarif($id): void
     {
-        if (!is_int($id))
+        if (intval($id) != $id)
             Templater::redirect('404');
         $tarif = Kernel::getModel(Tarif::class)->getById($id);
         $nameValidator = new LengthValidator(Kernel::post('name'), 'nom', 'm', 3, 20);
@@ -254,7 +254,7 @@ class AdminController extends AbstractController
 
     public function participationsLesson($id): void
     {
-        if (!is_int($id))
+        if (intval($id) != $id)
             Templater::redirect('404');
         $lesson = Kernel::getModel(Lesson::class)->getById($id);
         Templater::render('admin/participations/lesson.html.php', ['active' => 'admin', 'title' => 'Administration', 'lesson' => $lesson]);

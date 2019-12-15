@@ -23,7 +23,7 @@ class PlanningController extends AbstractController
     {
        return [
            new Route('planning','/planning', ['GET'] , function() { self::index(); }),
-           new Route('planning.trainer','/planning/{id}', ['GET'], function(int $id){ self::showTrainer($id); })
+           new Route('planning.trainer','/planning/{id}', ['GET'], function($id){ self::showTrainer($id); })
        ];
     }
 
@@ -47,6 +47,8 @@ class PlanningController extends AbstractController
 
     public function showTrainer($id): void
     {
+        if (!is_int($id))
+            Templater::redirect('404');
         $trainer = Kernel::getModel(Trainer::class)->getById($id);
         if ($trainer == null)
         {
@@ -56,7 +58,16 @@ class PlanningController extends AbstractController
             $date = new DateTime('now');
             $dates = Helper::generateDates( $date->format("W"), $date->format('Y'));
             $groupedLessons = Helper::groupLessonsByDays($trainer->getLessons());
-            Templater::render('planning/index.html.php', ['active' => 'planning', 'title' => 'Planning de ' . $trainer->getName(), 'dates' => $dates, 'groupedLessons' => $groupedLessons]);
+            $participations = [];
+            if (Kernel::isAuthed())
+            {
+                $_participations = Kernel::getModel(Participation::class)->getByUser(Kernel::getUser());
+                foreach ($_participations as $participation)
+                {
+                    array_push($participations, $participation->getLessonId());
+                }
+            }
+            Templater::render('planning/index.html.php', ['active' => 'planning', 'title' => 'Planning', 'dates' => $dates, 'groupedLessons' => $groupedLessons, 'participations' => $participations]);
         }
     }
 

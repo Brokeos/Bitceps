@@ -31,7 +31,7 @@ Configurer le serveur Apache pour qu'il accepte la réécriture (les .htaccess).
 
 ## Auteur
 
-* **Brokeos** - [Brokeos](https://github.com/Brokeos) - Brokeos#7065
+* **Brokeos** - [Brokeos](https://github.com/Brokeos) - Brokeos#2292
 
 ## Remerciements
 
